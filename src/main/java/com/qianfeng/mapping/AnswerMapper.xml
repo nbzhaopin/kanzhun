@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.AnswerMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.pojo.Answer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="ask_id" jdbcType="INTEGER" property="askId" />
+    <result column="check" jdbcType="INTEGER" property="check" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="anonymit" jdbcType="TINYINT" property="anonymit" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+  </resultMap>
+  
+   <resultMap id="BaseResultMap2" type="com.qianfeng.vo.AnswerVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="ask_id" jdbcType="INTEGER" property="askId" />
+    <result column="check" jdbcType="INTEGER" property="check" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="anonymit" jdbcType="TINYINT" property="anonymit" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <association property="user" resultMap="com.qianfeng.dao.UserMapper.BaseResultMap"></association>
+  </resultMap>
+  
+ 
+	 <resultMap id="BaseResultMap3" type="com.qianfeng.vo.AnswerVo">
+	    <id column="id" jdbcType="INTEGER" property="id" />
+	    <result column="content" jdbcType="VARCHAR" property="content" />
+	    <result column="ask_id" jdbcType="INTEGER" property="askId" />
+	    <result column="check" jdbcType="INTEGER" property="check" />
+	    <result column="img" jdbcType="VARCHAR" property="img" />
+	    <result column="anonymit" jdbcType="TINYINT" property="anonymit" />
+	    <result column="likes" jdbcType="INTEGER" property="likes" />
+	    <association property="user"  column="user_id" select="com.qianfeng.dao.userMapper.selectByPrimaryKey"></association>
+	  </resultMap>
+  
+  <sql id="Base_Column_List">
+    id, content, user_id, ask_id, check, img, anonymit,likes
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from interview_answer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from interview_answer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.pojo.Answer">
+    insert into interview_answer (id, content, user_id, 
+      ask_id, check, img, 
+      anonymit,likes)
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{askId,jdbcType=INTEGER}, #{check,jdbcType=INTEGER}, #{img,jdbcType=VARCHAR}, 
+      #{anonymit,jdbcType=TINYINT},#{likes,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.pojo.Answer">
+    insert into interview_answer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="askId != null">
+        ask_id,
+      </if>
+      <if test="check != null">
+        check,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="anonymit != null">
+        anonymit,
+      </if>
+       <if test="likes != null">
+        likes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="askId != null">
+        #{askId,jdbcType=INTEGER},
+      </if>
+      <if test="check != null">
+        #{check,jdbcType=INTEGER},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="anonymit != null">
+        #{anonymit,jdbcType=TINYINT},
+      </if>
+      <if test="likes != null">
+        #{likes,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.pojo.Answer">
+    update interview_answer
+    <set>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="askId != null">
+        ask_id = #{askId,jdbcType=INTEGER},
+      </if>
+      <if test="check != null">
+        check = #{check,jdbcType=INTEGER},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="anonymit != null">
+        anonymit = #{anonymit,jdbcType=TINYINT},
+      </if>
+      <if test="likes != null">
+        likes = #{likes,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.pojo.Answer">
+    update interview_answer
+    set content = #{content,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      ask_id = #{askId,jdbcType=INTEGER},
+      check = #{check,jdbcType=INTEGER},
+      img = #{img,jdbcType=VARCHAR},
+      anonymit = #{anonymit,jdbcType=TINYINT}
+      likes = #{likes,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+ <select id="findCountByAskId" parameterType="int" resultType="int">
+ 	select count(*) from interview_answer where ask_id=#{askId}
+ </select>
+</mapper>
