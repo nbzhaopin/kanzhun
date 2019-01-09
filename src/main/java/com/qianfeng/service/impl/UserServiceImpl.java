@@ -30,5 +30,19 @@ public class UserServiceImpl implements UserService{
 			return ResultVo.setERROR("登录失败");
 		}
 	}
+	@Override
+	public ResultVo login(String phone, String password) {
+		// TODO Auto-generated method stub
+		User user = userMapper.findUserByphone(phone);
+		if (user != null) {
+			if (user.getPassword().equals(EncryptUtil.md5Enc(password))) {
+				return ResultVo.setOK(user);
+			}else {
+				return ResultVo.setERROR("密码错误");
+			}
+		}else {
+			return ResultVo.setERROR("未找到该用户");
+		}
+	}
 
 }

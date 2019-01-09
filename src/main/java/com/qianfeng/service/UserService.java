@@ -9,4 +9,6 @@ public interface UserService {
 	ResultVo findAll();
 	
 	ResultVo saveUser(User user);
+	
+	ResultVo login(String phone, String userPassword);
 }
