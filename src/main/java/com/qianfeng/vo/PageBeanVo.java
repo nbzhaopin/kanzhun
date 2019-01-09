@@ -4,7 +4,7 @@ import java.util.List;
 
 public class PageBeanVo<T> {
 
-	private Integer code;
+private Integer code;
 	
 	private Integer count;
 	
@@ -42,6 +42,15 @@ public class PageBeanVo<T> {
 
 	public void setData(List<T> data) {
 		this.data = data;
+	}
+	
+	public static <T> PageBeanVo setPage(int count,List<T> data) {
+		PageBeanVo pvo=new PageBeanVo();
+		pvo.setCode(0);
+		pvo.setMsg("");
+		pvo.setCount(count);
+		pvo.setData(data);
+		return pvo;
 	}
 	
 	
