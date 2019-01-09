@@ -18,6 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableWebMvc
 @EnableSwagger2  //启用Swagger
+@EnableWebMvc
 public class SwaggerConfig {
     public ApiInfo createApi(){
         return new ApiInfoBuilder().title("第1期联合项目接口文档").

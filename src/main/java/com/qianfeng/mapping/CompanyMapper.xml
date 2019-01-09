@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.CompanyMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.pojo.Company">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="ename" jdbcType="VARCHAR" property="ename" />
+    <result column="corp" jdbcType="VARCHAR" property="corp" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="intro" jdbcType="VARCHAR" property="intro" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="cityId" jdbcType="INTEGER" property="cityid" />
+    <result column="scale" jdbcType="INTEGER" property="scale" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="money" jdbcType="VARCHAR" property="money" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, ename, corp, phone, url, address, intro, img, grade, cityId, scale, time, 
+    money
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from company
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.pojo.Company">
+    insert into company (id, name, ename, 
+      corp, phone, url, address, 
+      intro, img, grade, 
+      cityId, scale, time, 
+      money)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{ename,jdbcType=VARCHAR}, 
+      #{corp,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{intro,jdbcType=VARCHAR}, #{img,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, 
+      #{cityid,jdbcType=INTEGER}, #{scale,jdbcType=INTEGER}, #{time,jdbcType=VARCHAR}, 
+      #{money,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.pojo.Company">
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="ename != null">
+        ename,
+      </if>
+      <if test="corp != null">
+        corp,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="intro != null">
+        intro,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="cityid != null">
+        cityId,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ename != null">
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="corp != null">
+        #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null">
+        #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="cityid != null">
+        #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.pojo.Company">
+    update company
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="ename != null">
+        ename = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="corp != null">
+        corp = #{corp,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="intro != null">
+        intro = #{intro,jdbcType=VARCHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="cityid != null">
+        cityId = #{cityid,jdbcType=INTEGER},
+      </if>
+      <if test="scale != null">
+        scale = #{scale,jdbcType=INTEGER},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.pojo.Company">
+    update company
+    set name = #{name,jdbcType=VARCHAR},
+      ename = #{ename,jdbcType=VARCHAR},
+      corp = #{corp,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      intro = #{intro,jdbcType=VARCHAR},
+      img = #{img,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      cityId = #{cityid,jdbcType=INTEGER},
+      scale = #{scale,jdbcType=INTEGER},
+      time = #{time,jdbcType=VARCHAR},
+      money = #{money,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByDT" parameterType="map" resultType="com.qianfeng.vo.CompanyVo">
+	select co.* , ci.`name` ciname, pro.pname FROM company co
+    INNER JOIN pcom pc
+	ON co.id = pc.cid
+	INNER JOIN professor pro
+	ON pc.pid = pro.id
+	INNER JOIN city ci
+	ON co.cityId = ci.id
+	<!-- where标签，自动在sql中增加where关键字，而且多余的and、or内容会自动删除 -->
+	<where>
+		<!-- 单条件判断，test 判断条件 -->
+		<if test="cname!=null and cname!=''">
+			and cname = #{cname,jdbcType=VARCHAR}
+		</if>
+		<if test="pname!=null and pname!=''">
+			and pname = #{pname,jdbcType=VARCHAR}
+		</if>
+		<if test="level==1">
+			and scale between 0 and 20
+		</if>
+		<if test="level==2">
+			and scale between 21 and 99
+		</if>
+		<if test="level==3">
+			and scale between 100 and 499
+		</if>
+		<if test="level==4">
+			and scale between 500 and 1000
+		</if>
+		<if test="level==5">
+			and scale between 1001 and 9999
+		</if>
+		<if test="level==6">
+			and scale >= 10000
+		</if>
+	</where> 
+	    <if test="grade!=null and grade!=''">
+			ORDER BY co.grade
+		</if>
+  </select>
+</mapper>
