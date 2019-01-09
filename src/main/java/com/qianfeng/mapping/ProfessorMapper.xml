@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qianfeng.dao.ProfessorMapper">
   <resultMap id="BaseResultMap" type="com.qianfeng.pojo.Professor">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="pid" jdbcType="INTEGER" property="pid" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -12,21 +12,21 @@
     select 
     <include refid="Base_Column_List" />
     from professor
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from professor
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qianfeng.pojo.Professor">
-    insert into professor (id, pname)
+    insert into professor (pid, pname)
     values (#{id,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.qianfeng.pojo.Professor">
     insert into professor
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        id,
+        pid,
       </if>
       <if test="pname != null">
         pname,
@@ -48,11 +48,11 @@
         pname = #{pname,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qianfeng.pojo.Professor">
     update professor
     set pname = #{pname,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    where pid = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
