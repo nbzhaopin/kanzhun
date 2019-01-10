@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qianfeng.pojo.Ask;
 import com.qianfeng.service.AnswerService;
 import com.qianfeng.service.AskService;
-import com.qianfeng.service.CommentService;
 import com.qianfeng.service.ConcernService;
 import com.qianfeng.vo.AskVo;
 import com.qianfeng.vo.AskandAnswers;
@@ -19,7 +18,7 @@ import com.qianfeng.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 @CrossOrigin
-@Api(value="首页问答的问题",produces="首页问答的问题")
+@Api(value="首页问答的问题",produces="首页问答的问题",tags= {"首页问答"})
 @RestController
 public class AskController {
 
@@ -29,8 +28,6 @@ public class AskController {
 	private ConcernService concernService;
 	@Autowired
 	private AnswerService answerService;
-	@Autowired
-	private CommentService commentService;
 	
 	@ApiOperation(value="获取四大类问题的具体列表")
 	@GetMapping("asklist.do")
@@ -39,7 +36,7 @@ public class AskController {
 		return ResultVo.setOK(list);
 	}
 	
-	@ApiOperation(value="增加问题信息",notes="注意传入具体的类型id,1 精选 2 干货 3 狗血 4唠嗑")
+	@ApiOperation(value="增加问题信息",notes="注意传入具体的类型state,1 精选 2 干货 3 狗血 4唠嗑")
 	@GetMapping("addask.do")
 	public ResultVo addAsk(Ask ask) {
 		return askService.addAsk(ask);

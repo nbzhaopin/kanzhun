@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService{
 	public ResultVo login(String phone, String password) {
 		// TODO Auto-generated method stub
 		User user = userMapper.findUserByphone(phone);
+		System.out.println("-----" + user);
 		if (user != null) {
 			if (user.getPassword().equals(EncryptUtil.md5Enc(password))) {
 				return ResultVo.setOK(user);
@@ -44,6 +45,11 @@ public class UserServiceImpl implements UserService{
 		}else {
 			return ResultVo.setERROR("未找到该用户");
 		}
+	}
+	@Override
+	public User findUserById(Integer userId) {
+		// TODO Auto-generated method stub
+		return userMapper.selectByPrimaryKey(userId);
 	}
 
 }

@@ -12,4 +12,6 @@ public interface UserService {
 	ResultVo saveUser(User user);
 	
 	ResultVo login(String phone, String Password);
+	
+	User findUserById(Integer userId);
 }

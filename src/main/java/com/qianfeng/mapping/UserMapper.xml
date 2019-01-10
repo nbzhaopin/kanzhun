@@ -83,6 +83,6 @@
   	select * from user
   </select>
   <select id="findUserByphone" parameterType="string" resultMap="BaseResultMap">
-  	select * from user where phone={phone}
+  	select * from user where phone=#{'phone',jdbcType=VARCHAR}
   </select>
 </mapper>
