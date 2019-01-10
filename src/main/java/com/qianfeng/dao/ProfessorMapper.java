@@ -1,5 +1,7 @@
 package com.qianfeng.dao;
 
+import java.util.List;
+
 import com.qianfeng.pojo.Professor;
 
 public interface ProfessorMapper {
@@ -14,4 +16,6 @@ public interface ProfessorMapper {
     int updateByPrimaryKeySelective(Professor record);
 
     int updateByPrimaryKey(Professor record);
+    
+    List<Professor> findAllPosition();
 }

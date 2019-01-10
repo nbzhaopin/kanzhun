@@ -1,20 +1,25 @@
 package com.qianfeng.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(value="用户的具体信息")
 public class Uinfo {
+	@ApiModelProperty(value="自增id你懂得")
     private Integer id;
-
+	@ApiModelProperty(value="昵称",required=true)
     private String nickname;
-
+	@ApiModelProperty(value="性别",required=true)
     private Integer sex;
-
+	@ApiModelProperty(value="自增id你懂得")
     private Integer identity;
-
+	@ApiModelProperty(value="自增id你懂得")
     private String icon;
-
+	@ApiModelProperty(value="自增id你懂得")
     private String address;
-
+	@ApiModelProperty(value="自增id你懂得")
     private String presentation;
-
+	@ApiModelProperty(value="自增id你懂得")
     private Integer uid;
 
     public Integer getId() {

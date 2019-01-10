@@ -55,4 +55,7 @@
     set poname = #{poname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findAllPosition" resultMap="BaseResultMap">
+  	select * from position
+  </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.qianfeng.dao;
 
+import java.util.List;
+
 import com.qianfeng.pojo.Position;
 
 public interface PositionMapper {
@@ -14,4 +16,6 @@ public interface PositionMapper {
     int updateByPrimaryKeySelective(Position record);
 
     int updateByPrimaryKey(Position record);
+    
+    List<Position> findAllPosition();
 }

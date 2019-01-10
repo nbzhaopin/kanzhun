@@ -55,4 +55,7 @@
     set pname = #{pname,jdbcType=VARCHAR}
     where pid = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findAllPosition" resultMap="BaseResultMap">
+  	select * from professor
+  </select>
 </mapper>
