@@ -6,9 +6,12 @@
     <result column="content" jdbcType="VARCHAR" property="content" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="poid" jdbcType="INTEGER" property="poid" />
+    <result column="metime" jdbcType="VARCHAR" property="metime" />
+    <result column="metype" jdbcType="VARCHAR" property="metype" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, content, cid, uid
+    id, content, cid, uid, poid, metime, metype
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -22,9 +25,11 @@
   </delete>
   <insert id="insert" parameterType="com.qianfeng.pojo.Message">
     insert into message (id, content, cid, 
-      uid)
+      uid, poid, metime, 
+      metype)
     values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER}, 
-      #{uid,jdbcType=INTEGER})
+      #{uid,jdbcType=INTEGER}, #{poid,jdbcType=INTEGER}, #{metime,jdbcType=VARCHAR}, 
+      #{metype,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.qianfeng.pojo.Message">
     insert into message
@@ -41,6 +46,15 @@
       <if test="uid != null">
         uid,
       </if>
+      <if test="poid != null">
+        poid,
+      </if>
+      <if test="metime != null">
+        metime,
+      </if>
+      <if test="metype != null">
+        metype,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -54,6 +68,15 @@
       </if>
       <if test="uid != null">
         #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="poid != null">
+        #{poid,jdbcType=INTEGER},
+      </if>
+      <if test="metime != null">
+        #{metime,jdbcType=VARCHAR},
+      </if>
+      <if test="metype != null">
+        #{metype,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -69,6 +92,15 @@
       <if test="uid != null">
         uid = #{uid,jdbcType=INTEGER},
       </if>
+      <if test="poid != null">
+        poid = #{poid,jdbcType=INTEGER},
+      </if>
+      <if test="metime != null">
+        metime = #{metime,jdbcType=VARCHAR},
+      </if>
+      <if test="metype != null">
+        metype = #{metype,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -76,7 +108,27 @@
     update message
     set content = #{content,jdbcType=VARCHAR},
       cid = #{cid,jdbcType=INTEGER},
-      uid = #{uid,jdbcType=INTEGER}
+      uid = #{uid,jdbcType=INTEGER},
+      poid = #{poid,jdbcType=INTEGER},
+      metime = #{metime,jdbcType=VARCHAR},
+      metype = #{metype,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectAllById" parameterType="java.lang.Integer" resultMap="com.qianfeng.vo.MessageVo">
+    SELECT me.id, me.content, me.metime, ci.`name` ciname, co.grade, po.poname, ui.icon, ui.nickname 
+	FROM message me
+	INNER JOIN company co
+	ON me.cid = co.id
+	INNER JOIN city ci
+	ON ci.id = co.cityId
+	INNER JOIN position po
+	ON po.id = me.poid
+	INNER JOIN `user` us
+	ON us.id = me.uid
+	INNER JOIN uinfo ui
+	ON ui.uid = us.id
+    where co.id = #{id,jdbcType=INTEGER}
+  </select>
+  
 </mapper>

@@ -1,6 +1,9 @@
 package com.qianfeng.dao;
 
+import java.util.List;
+
 import com.qianfeng.pojo.Message;
+import com.qianfeng.vo.MessageVo;
 
 public interface MessageMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,6 @@ public interface MessageMapper {
     int updateByPrimaryKeySelective(Message record);
 
     int updateByPrimaryKey(Message record);
+    
+    List<MessageVo> selectAllById(Integer id);
 }
