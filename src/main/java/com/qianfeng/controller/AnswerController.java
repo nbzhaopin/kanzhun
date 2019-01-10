@@ -22,7 +22,7 @@ public class AnswerController {
 	@Autowired
 	private AnswerService answerService;
 	
-	@ApiOperation(value="用户回答精选问题、唠嗑问题等",notes="注意图片的属性名：name与参数名保持一致")
+	@ApiOperation(value="用户回答精选问题、唠嗑问题等",notes="注意图片的属性名：name与参数名保持一致upfile,情况紧急，先上传一张就行了")
 	@PostMapping("addAnswer.do")
 	public ResultVo addAnswer(@RequestParam MultipartFile upfile, Answer answer) {
 		

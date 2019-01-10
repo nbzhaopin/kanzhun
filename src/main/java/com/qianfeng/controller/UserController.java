@@ -19,7 +19,6 @@ import com.qianfeng.vo.ResultVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-
 @Api(value = "用户接口文档",tags= {"登录页面"})
 @RestController
 public class UserController {
