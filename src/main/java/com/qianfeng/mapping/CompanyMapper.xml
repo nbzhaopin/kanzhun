@@ -16,7 +16,12 @@
     <result column="scale" jdbcType="INTEGER" property="scale" />
     <result column="time" jdbcType="VARCHAR" property="time" />
     <result column="money" jdbcType="VARCHAR" property="money" />
+     <result column="ciname" jdbcType="VARCHAR" property="ciname" />
+    <collection property="professor" javaType="java.util.ArrayList" resultMap="com.qianfeng.dao.ProfessorMapper.BaseResultMap"></collection>
+   
   </resultMap>
+  
+ 
   <sql id="Base_Column_List">
     id, name, ename, corp, phone, url, address, intro, img, grade, cityId, scale, time, 
     money
@@ -197,19 +202,19 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
-  <select id="selectByDT" parameterType="map" resultType="com.qianfeng.vo.CompanyVo">
-	select co.* , ci.`name` ciname, pro.pname FROM company co
+  <select id="selectByDT" parameterType="map" resultMap="BaseResultMap">
+	select co.* , ci.`name` ciname, pro.* FROM company co
     INNER JOIN pcom pc
 	ON co.id = pc.cid
 	INNER JOIN professor pro
-	ON pc.pid = pro.id
+	ON pc.pid = pro.pid
 	INNER JOIN city ci
 	ON co.cityId = ci.id
 	<!-- where标签，自动在sql中增加where关键字，而且多余的and、or内容会自动删除 -->
 	<where>
 		<!-- 单条件判断，test 判断条件 -->
-		<if test="cname!=null and cname!=''">
-			and cname = #{cname,jdbcType=VARCHAR}
+		<if test="ciname!=null and ciname!=''">
+			and ciname = #{ciname,jdbcType=VARCHAR}
 		</if>
 		<if test="pname!=null and pname!=''">
 			and pname = #{pname,jdbcType=VARCHAR}

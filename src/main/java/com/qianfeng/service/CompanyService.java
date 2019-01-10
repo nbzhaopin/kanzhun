@@ -1,6 +1,7 @@
 package com.qianfeng.service;
 
 
+import com.qianfeng.pojo.Company;
 import com.qianfeng.vo.CompanyVo;
 import com.qianfeng.vo.PageBeanVo;
 
@@ -8,5 +9,5 @@ import com.qianfeng.vo.PageBeanVo;
 public interface CompanyService {
 	
 
-	public PageBeanVo<CompanyVo> selectByTJ(int page, int limit, String cname, String pname, String grade, String level);
+	public PageBeanVo<Company> selectByTJ(int page, int limit, String ciname, String pname, String grade, String level);
 }

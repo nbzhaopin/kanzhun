@@ -19,5 +19,5 @@ public interface CompanyMapper {
 
     int updateByPrimaryKey(Company record);
     
-    List<CompanyVo> selectByDT(Map<String, Object> map);
+    List<Company> selectByDT(Map<String, Object> map);
 }

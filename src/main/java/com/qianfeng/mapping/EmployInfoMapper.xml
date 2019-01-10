@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.EmployInfoMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.pojo.EmployInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyname" />
+    <result column="place" jdbcType="VARCHAR" property="place" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="jobAge" jdbcType="VARCHAR" property="jobage" />
+    <result column="pay" jdbcType="INTEGER" property="pay" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, job, companyName, place, education, jobAge, pay, flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from employinfo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employinfo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.pojo.EmployInfo">
+    insert into employinfo (id, job, companyName, 
+      place, education, jobAge, 
+      pay, flag)
+    values (#{id,jdbcType=INTEGER}, #{job,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
+      #{place,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{jobage,jdbcType=VARCHAR}, 
+      #{pay,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.pojo.EmployInfo">
+    insert into employinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="companyname != null">
+        companyName,
+      </if>
+      <if test="place != null">
+        place,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="jobage != null">
+        jobAge,
+      </if>
+      <if test="pay != null">
+        pay,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null">
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="jobage != null">
+        #{jobage,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        #{pay,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.pojo.EmployInfo">
+    update employinfo
+    <set>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null">
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="jobage != null">
+        jobAge = #{jobage,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        pay = #{pay,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.pojo.EmployInfo">
+    update employinfo
+    set job = #{job,jdbcType=VARCHAR},
+      companyName = #{companyname,jdbcType=VARCHAR},
+      place = #{place,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      jobAge = #{jobage,jdbcType=VARCHAR},
+      pay = #{pay,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

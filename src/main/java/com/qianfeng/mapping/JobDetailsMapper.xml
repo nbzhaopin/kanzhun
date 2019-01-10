@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.JobDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.pojo.JobDetails">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyname" />
+    <result column="pay" jdbcType="INTEGER" property="pay" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="identity" jdbcType="VARCHAR" property="identity" />
+    <result column="replySpeed" jdbcType="DOUBLE" property="replyspeed" />
+    <result column="jobDescribe" jdbcType="VARCHAR" property="jobdescribe" />
+    <result column="request" jdbcType="VARCHAR" property="request" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, job, companyName, pay, name, identity, replySpeed, jobDescribe, request
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jobdetails
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jobdetails
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.pojo.JobDetails">
+    insert into jobdetails (id, job, companyName, 
+      pay, name, identity, 
+      replySpeed, jobDescribe, request
+      )
+    values (#{id,jdbcType=INTEGER}, #{job,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
+      #{pay,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{identity,jdbcType=VARCHAR}, 
+      #{replyspeed,jdbcType=DOUBLE}, #{jobdescribe,jdbcType=VARCHAR}, #{request,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.pojo.JobDetails">
+    insert into jobdetails
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="companyname != null">
+        companyName,
+      </if>
+      <if test="pay != null">
+        pay,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="identity != null">
+        identity,
+      </if>
+      <if test="replyspeed != null">
+        replySpeed,
+      </if>
+      <if test="jobdescribe != null">
+        jobDescribe,
+      </if>
+      <if test="request != null">
+        request,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        #{pay,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="replyspeed != null">
+        #{replyspeed,jdbcType=DOUBLE},
+      </if>
+      <if test="jobdescribe != null">
+        #{jobdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="request != null">
+        #{request,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.pojo.JobDetails">
+    update jobdetails
+    <set>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="pay != null">
+        pay = #{pay,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        identity = #{identity,jdbcType=VARCHAR},
+      </if>
+      <if test="replyspeed != null">
+        replySpeed = #{replyspeed,jdbcType=DOUBLE},
+      </if>
+      <if test="jobdescribe != null">
+        jobDescribe = #{jobdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="request != null">
+        request = #{request,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.pojo.JobDetails">
+    update jobdetails
+    set job = #{job,jdbcType=VARCHAR},
+      companyName = #{companyname,jdbcType=VARCHAR},
+      pay = #{pay,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      identity = #{identity,jdbcType=VARCHAR},
+      replySpeed = #{replyspeed,jdbcType=DOUBLE},
+      jobDescribe = #{jobdescribe,jdbcType=VARCHAR},
+      request = #{request,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

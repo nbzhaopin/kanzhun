@@ -1,17 +1,11 @@
 package com.qianfeng.pojo;
 
 public class Professor {
-    private Integer id;
+    private Integer pid;
 
     private String pname;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+   
 
     public String getPname() {
         return pname;
@@ -20,4 +14,12 @@ public class Professor {
     public void setPname(String pname) {
         this.pname = pname == null ? null : pname.trim();
     }
+
+	public Integer getPid() {
+		return pid;
+	}
+
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
 }

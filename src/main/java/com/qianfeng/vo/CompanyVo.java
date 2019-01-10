@@ -164,7 +164,9 @@ public class CompanyVo {
 
 	public void setProfessor(List<Professor> professor) {
 		this.professor = professor;
-	} 
+	}
+
+
 	
 	
 }

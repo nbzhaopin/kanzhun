@@ -1,5 +1,9 @@
 package com.qianfeng.pojo;
 
+import java.util.List;
+
+import com.qianfeng.vo.CompanyVo;
+
 public class Company {
     private Integer id;
 
@@ -28,6 +32,10 @@ public class Company {
     private String time;
 
     private String money;
+    
+    private List<Professor> professor;
+    
+    private String ciname;
 
     public Integer getId() {
         return id;
@@ -140,4 +148,24 @@ public class Company {
     public void setMoney(String money) {
         this.money = money == null ? null : money.trim();
     }
+
+
+
+	public List<Professor> getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(List<Professor> professor) {
+		this.professor = professor;
+	}
+
+
+
+	public String getCiname() {
+		return ciname;
+	}
+
+	public void setCiname(String ciname) {
+		this.ciname = ciname;
+	}
 }
