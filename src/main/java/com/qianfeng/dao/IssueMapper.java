@@ -1,5 +1,7 @@
 package com.qianfeng.dao;
 
+import java.util.List;
+
 import com.qianfeng.pojo.Issue;
 
 public interface IssueMapper {
@@ -14,4 +16,6 @@ public interface IssueMapper {
     int updateByPrimaryKeySelective(Issue record);
 
     int updateByPrimaryKey(Issue record);
+    
+    List<Issue> selectById(Integer id);
 }

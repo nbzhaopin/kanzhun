@@ -5,6 +5,8 @@ public class Issue {
 
     private String info;
 
+    private String describe;
+
     private Integer cid;
 
     private Integer uid;
@@ -25,6 +27,14 @@ public class Issue {
 
     public void setInfo(String info) {
         this.info = info == null ? null : info.trim();
+    }
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe == null ? null : describe.trim();
     }
 
     public Integer getCid() {

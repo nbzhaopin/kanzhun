@@ -3,7 +3,9 @@ package com.qianfeng.pojo;
 public class Hko {
     private Integer id;
 
-    private String 面试结果;
+    private String result;
+
+    private String hkinfo;
 
     private String time;
 
@@ -21,12 +23,20 @@ public class Hko {
         this.id = id;
     }
 
-    public String get面试结果() {
-        return 面试结果;
+    public String getResult() {
+        return result;
     }
 
-    public void set面试结果(String 面试结果) {
-        this.面试结果 = 面试结果 == null ? null : 面试结果.trim();
+    public void setResult(String result) {
+        this.result = result == null ? null : result.trim();
+    }
+
+    public String getHkinfo() {
+        return hkinfo;
+    }
+
+    public void setHkinfo(String hkinfo) {
+        this.hkinfo = hkinfo == null ? null : hkinfo.trim();
     }
 
     public String getTime() {

@@ -3,14 +3,15 @@
 <mapper namespace="com.qianfeng.dao.HkoMapper">
   <resultMap id="BaseResultMap" type="com.qianfeng.pojo.Hko">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="面试结果" jdbcType="VARCHAR" property="面试结果" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="hkinfo" jdbcType="VARCHAR" property="hkinfo" />
     <result column="time" jdbcType="VARCHAR" property="time" />
     <result column="poid" jdbcType="INTEGER" property="poid" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, 面试结果, time, poid, cid, uid
+    id, result, hkinfo, time, poid, cid, uid
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -23,10 +24,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qianfeng.pojo.Hko">
-    insert into hko (id, 面试结果, time, 
-      poid, cid, uid)
-    values (#{id,jdbcType=INTEGER}, #{面试结果,jdbcType=VARCHAR}, #{time,jdbcType=VARCHAR}, 
-      #{poid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER})
+    insert into hko (id, result, hkinfo, 
+      time, poid, cid, uid
+      )
+    values (#{id,jdbcType=INTEGER}, #{result,jdbcType=VARCHAR}, #{hkinfo,jdbcType=VARCHAR}, 
+      #{time,jdbcType=VARCHAR}, #{poid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.qianfeng.pojo.Hko">
     insert into hko
@@ -34,8 +37,11 @@
       <if test="id != null">
         id,
       </if>
-      <if test="面试结果 != null">
-        面试结果,
+      <if test="result != null">
+        result,
+      </if>
+      <if test="hkinfo != null">
+        hkinfo,
       </if>
       <if test="time != null">
         time,
@@ -54,8 +60,11 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="面试结果 != null">
-        #{面试结果,jdbcType=VARCHAR},
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="hkinfo != null">
+        #{hkinfo,jdbcType=VARCHAR},
       </if>
       <if test="time != null">
         #{time,jdbcType=VARCHAR},
@@ -74,8 +83,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.pojo.Hko">
     update hko
     <set>
-      <if test="面试结果 != null">
-        面试结果 = #{面试结果,jdbcType=VARCHAR},
+      <if test="result != null">
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="hkinfo != null">
+        hkinfo = #{hkinfo,jdbcType=VARCHAR},
       </if>
       <if test="time != null">
         time = #{time,jdbcType=VARCHAR},
@@ -94,11 +106,19 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qianfeng.pojo.Hko">
     update hko
-    set 面试结果 = #{面试结果,jdbcType=VARCHAR},
+    set result = #{result,jdbcType=VARCHAR},
+      hkinfo = #{hkinfo,jdbcType=VARCHAR},
       time = #{time,jdbcType=VARCHAR},
       poid = #{poid,jdbcType=INTEGER},
       cid = #{cid,jdbcType=INTEGER},
       uid = #{uid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hko
+    where cid = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

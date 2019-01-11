@@ -4,12 +4,13 @@
   <resultMap id="BaseResultMap" type="com.qianfeng.pojo.Issue">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="info" jdbcType="VARCHAR" property="info" />
+    <result column="describe" jdbcType="VARCHAR" property="describe" />
     <result column="cid" jdbcType="INTEGER" property="cid" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="type" jdbcType="VARCHAR" property="type" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, info, cid, uid, type
+    id, info, describe, cid, uid, type
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -22,10 +23,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qianfeng.pojo.Issue">
-    insert into issue (id, info, cid, 
-      uid, type)
-    values (#{id,jdbcType=INTEGER}, #{info,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER}, 
-      #{uid,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR})
+    insert into issue (id, info, describe, 
+      cid, uid, type)
+    values (#{id,jdbcType=INTEGER}, #{info,jdbcType=VARCHAR}, #{describe,jdbcType=VARCHAR}, 
+      #{cid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.qianfeng.pojo.Issue">
     insert into issue
@@ -35,6 +36,9 @@
       </if>
       <if test="info != null">
         info,
+      </if>
+      <if test="describe != null">
+        describe,
       </if>
       <if test="cid != null">
         cid,
@@ -53,6 +57,9 @@
       <if test="info != null">
         #{info,jdbcType=VARCHAR},
       </if>
+      <if test="describe != null">
+        #{describe,jdbcType=VARCHAR},
+      </if>
       <if test="cid != null">
         #{cid,jdbcType=INTEGER},
       </if>
@@ -70,6 +77,9 @@
       <if test="info != null">
         info = #{info,jdbcType=VARCHAR},
       </if>
+      <if test="describe != null">
+        describe = #{describe,jdbcType=VARCHAR},
+      </if>
       <if test="cid != null">
         cid = #{cid,jdbcType=INTEGER},
       </if>
@@ -85,9 +95,18 @@
   <update id="updateByPrimaryKey" parameterType="com.qianfeng.pojo.Issue">
     update issue
     set info = #{info,jdbcType=VARCHAR},
+      describe = #{describe,jdbcType=VARCHAR},
       cid = #{cid,jdbcType=INTEGER},
       uid = #{uid,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from issue
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  
 </mapper>
