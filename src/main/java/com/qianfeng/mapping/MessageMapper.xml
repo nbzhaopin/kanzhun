@@ -115,7 +115,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   
-  <select id="selectAllById" parameterType="java.lang.Integer" resultMap="com.qianfeng.vo.MessageVo">
+  <select id="selectAllById" parameterType="java.lang.Integer" resultType="com.qianfeng.vo.MessageVo">
     SELECT me.id, me.content, me.metime, ci.`name` ciname, co.grade, po.poname, ui.icon, ui.nickname 
 	FROM message me
 	INNER JOIN company co
