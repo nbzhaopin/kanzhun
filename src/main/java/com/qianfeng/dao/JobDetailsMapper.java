@@ -24,7 +24,7 @@ public interface JobDetailsMapper {
 	/**
 	 * 
 	 */
-    @Select("select id,job,companyName,pay,name,identity,replySpeed,jobDescribe,request from employinfo")
+    @Select("select id,job,companyName,pay,name,identity,replySpeed,jobDescribe,request from jobdetails")
 	@ResultType(JobDetails.class)
 	List<JobDetailsMapper> findJobDetailsAll();
 }

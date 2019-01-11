@@ -10,13 +10,18 @@ import org.springframework.stereotype.Service;
 
 import com.qianfeng.dao.AreaMapper;
 import com.qianfeng.dao.EmployInfoMapper;
+import com.qianfeng.dao.JianLiMapper;
 import com.qianfeng.dao.JobDetailsMapper;
 import com.qianfeng.dao.JobGangWeiMapper;
 import com.qianfeng.dao.MyfrindsMapper;
+import com.qianfeng.dao.ProfessionHabitMapper;
+import com.qianfeng.dao.QiuZhiMapper;
 import com.qianfeng.pojo.Area;
 import com.qianfeng.pojo.EmployInfo;
+import com.qianfeng.pojo.JianLi;
 import com.qianfeng.pojo.JobGangWei;
 import com.qianfeng.pojo.Myfrinds;
+import com.qianfeng.pojo.ProfessionHabit;
 import com.qianfeng.vo.ResultVo;
 
 /** 
@@ -30,6 +35,15 @@ import com.qianfeng.vo.ResultVo;
 public class JiYuServiceImpl implements com.qianfeng.service.JiYuService {
 	@Autowired
 	MyfrindsMapper friendDao;
+	
+	@Autowired
+	ProfessionHabitMapper proDao;
+	
+	@Autowired
+	JianLiMapper jianliDao;
+	
+	@Autowired
+	QiuZhiMapper qiuzhiDao;
 	
 	@Autowired
 	EmployInfoMapper empDao;
@@ -120,6 +134,36 @@ public class JiYuServiceImpl implements com.qianfeng.service.JiYuService {
 		// TODO Auto-generated method stub
 		List<JobGangWei> list = jobgDao.findJobgangweiByid(id2);
 		return ResultVo.setOK(list);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.qianfeng.service.JiYuService#findUrlByid(int)
+	 */
+	@Override
+	public ResultVo findUrlByid(int id2) {
+		// TODO Auto-generated method stub
+		String list = qiuzhiDao.findUrlByid(id2);
+		return ResultVo.setOK(list);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.qianfeng.service.JiYuService#findJianliByid(int)
+	 */
+	@Override
+	public ResultVo findJianliByid(int id2) {
+		// TODO Auto-generated method stub
+		JianLi list = jianliDao.findJianliByid(id2);
+		return ResultVo.setOK(list);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.qianfeng.service.JiYuService#findhabitByid(int)
+	 */
+	@Override
+	public ResultVo findhabitByid(int id2) {
+		// TODO Auto-generated method stub
+		ProfessionHabit h = proDao.findhabitByid(id2);
+		return ResultVo.setOK(h);
 	}
 	
 	

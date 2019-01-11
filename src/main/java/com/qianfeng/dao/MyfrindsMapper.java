@@ -21,7 +21,7 @@ public interface MyfrindsMapper {
 
     int updateByPrimaryKey(Myfrinds record);
     
-    @Select("select id,name,profession,relation from myfriends ")
+    @Select("select * from myfriends where flag=#{flag}")
 	@ResultType(Myfrinds.class)
     List<Myfrinds> findbyFlag(int flag);
 
@@ -29,14 +29,14 @@ public interface MyfrindsMapper {
 	 * @param id
 	 * @return
 	 */
-    @Update("update myfriend set flag=1 where id={#id}")
+    @Update("update myfriends set flag=1 where id=#{id}")
     @ResultType(int.class)
 	int updateflagById(Integer id);
 
 	/**
 	 * @param relation
 	 */
-    @Select("select id,name,profession,relation from myfriends where relation={#relation}")
+    @Select("select id,name,profession,relation from myfriends where relation=#{relation}")
     @ResultType(Myfrinds.class)
 	List<Myfrinds> findFriendsByRelation(String relation);
 }

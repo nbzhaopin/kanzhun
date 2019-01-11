@@ -24,7 +24,7 @@ public interface JobGangWeiMapper {
 	/**
 	 * @param id2
 	 */
-    @Select("select jid,name from jobgangwei where did={#id2} ")
+    @Select("select jid,name from jobgangwei where did=#{id2} ")
 	@ResultType(JobGangWei.class)
 	List<JobGangWei> findJobgangweiByid(int id2);
 }

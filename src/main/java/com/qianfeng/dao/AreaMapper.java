@@ -24,7 +24,7 @@ public interface AreaMapper {
 	/**
 	 * @param id2
 	 */
-    @Select("select aid,name from area where pid={#id2}")
+    @Select("select aid,name from area where pid=#{id2}")
    	@ResultType(Area.class)
 	List<Area> findAreaByid(int id2);
 }

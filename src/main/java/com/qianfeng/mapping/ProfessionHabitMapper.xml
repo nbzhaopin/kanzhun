@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.ProfessionHabitMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.pojo.ProfessionHabit">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="wantprofession" jdbcType="VARCHAR" property="wantprofession" />
+    <result column="wantaspect" jdbcType="VARCHAR" property="wantaspect" />
+    <result column="wantworkarea" jdbcType="VARCHAR" property="wantworkarea" />
+    <result column="wantpay" jdbcType="VARCHAR" property="wantpay" />
+    <result column="flag" jdbcType="VARCHAR" property="flag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, status, wantprofession, wantaspect, wantworkarea, wantpay, flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from professionhabit
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from professionhabit
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.pojo.ProfessionHabit">
+    insert into professionhabit (id, status, wantprofession, 
+      wantaspect, wantworkarea, wantpay, 
+      flag)
+    values (#{id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{wantprofession,jdbcType=VARCHAR}, 
+      #{wantaspect,jdbcType=VARCHAR}, #{wantworkarea,jdbcType=VARCHAR}, #{wantpay,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.pojo.ProfessionHabit">
+    insert into professionhabit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="wantprofession != null">
+        wantprofession,
+      </if>
+      <if test="wantaspect != null">
+        wantaspect,
+      </if>
+      <if test="wantworkarea != null">
+        wantworkarea,
+      </if>
+      <if test="wantpay != null">
+        wantpay,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wantprofession != null">
+        #{wantprofession,jdbcType=VARCHAR},
+      </if>
+      <if test="wantaspect != null">
+        #{wantaspect,jdbcType=VARCHAR},
+      </if>
+      <if test="wantworkarea != null">
+        #{wantworkarea,jdbcType=VARCHAR},
+      </if>
+      <if test="wantpay != null">
+        #{wantpay,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.pojo.ProfessionHabit">
+    update professionhabit
+    <set>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wantprofession != null">
+        wantprofession = #{wantprofession,jdbcType=VARCHAR},
+      </if>
+      <if test="wantaspect != null">
+        wantaspect = #{wantaspect,jdbcType=VARCHAR},
+      </if>
+      <if test="wantworkarea != null">
+        wantworkarea = #{wantworkarea,jdbcType=VARCHAR},
+      </if>
+      <if test="wantpay != null">
+        wantpay = #{wantpay,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.pojo.ProfessionHabit">
+    update professionhabit
+    set status = #{status,jdbcType=VARCHAR},
+      wantprofession = #{wantprofession,jdbcType=VARCHAR},
+      wantaspect = #{wantaspect,jdbcType=VARCHAR},
+      wantworkarea = #{wantworkarea,jdbcType=VARCHAR},
+      wantpay = #{wantpay,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

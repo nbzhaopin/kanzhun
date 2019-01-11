@@ -45,4 +45,19 @@ public interface JiYuService {
 	 * @return
 	 */
 	ResultVo findJobgangweiByid(int id2);
+	/**
+	 * @param id2
+	 * @return
+	 */
+	ResultVo findUrlByid(int id2);
+	/**
+	 * @param id2
+	 * @return
+	 */
+	ResultVo findJianliByid(int id2);
+	/**
+	 * @param id2
+	 * @return
+	 */
+	ResultVo findhabitByid(int id2);
 }

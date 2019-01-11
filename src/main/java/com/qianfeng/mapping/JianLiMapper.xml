@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.JianLiMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.pojo.JianLi">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="profession" jdbcType="VARCHAR" property="profession" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="wantjob" jdbcType="VARCHAR" property="wantjob" />
+    <result column="wanthangye" jdbcType="VARCHAR" property="wanthangye" />
+    <result column="wantarea" jdbcType="VARCHAR" property="wantarea" />
+    <result column="wantpay" jdbcType="VARCHAR" property="wantpay" />
+    <result column="workexperience" jdbcType="VARCHAR" property="workexperience" />
+    <result column="eudcationexperience" jdbcType="VARCHAR" property="eudcationexperience" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, area, profession, birthday, email, status, wantjob, wanthangye, wantarea, 
+    wantpay, workexperience, eudcationexperience
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jianli
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jianli
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.pojo.JianLi">
+    insert into jianli (id, name, area, 
+      profession, birthday, email, 
+      status, wantjob, wanthangye, 
+      wantarea, wantpay, workexperience, 
+      eudcationexperience)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{profession,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{wantjob,jdbcType=VARCHAR}, #{wanthangye,jdbcType=VARCHAR}, 
+      #{wantarea,jdbcType=VARCHAR}, #{wantpay,jdbcType=VARCHAR}, #{workexperience,jdbcType=VARCHAR}, 
+      #{eudcationexperience,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.pojo.JianLi">
+    insert into jianli
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="profession != null">
+        profession,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="wantjob != null">
+        wantjob,
+      </if>
+      <if test="wanthangye != null">
+        wanthangye,
+      </if>
+      <if test="wantarea != null">
+        wantarea,
+      </if>
+      <if test="wantpay != null">
+        wantpay,
+      </if>
+      <if test="workexperience != null">
+        workexperience,
+      </if>
+      <if test="eudcationexperience != null">
+        eudcationexperience,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null">
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wantjob != null">
+        #{wantjob,jdbcType=VARCHAR},
+      </if>
+      <if test="wanthangye != null">
+        #{wanthangye,jdbcType=VARCHAR},
+      </if>
+      <if test="wantarea != null">
+        #{wantarea,jdbcType=VARCHAR},
+      </if>
+      <if test="wantpay != null">
+        #{wantpay,jdbcType=VARCHAR},
+      </if>
+      <if test="workexperience != null">
+        #{workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="eudcationexperience != null">
+        #{eudcationexperience,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.pojo.JianLi">
+    update jianli
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null">
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="wantjob != null">
+        wantjob = #{wantjob,jdbcType=VARCHAR},
+      </if>
+      <if test="wanthangye != null">
+        wanthangye = #{wanthangye,jdbcType=VARCHAR},
+      </if>
+      <if test="wantarea != null">
+        wantarea = #{wantarea,jdbcType=VARCHAR},
+      </if>
+      <if test="wantpay != null">
+        wantpay = #{wantpay,jdbcType=VARCHAR},
+      </if>
+      <if test="workexperience != null">
+        workexperience = #{workexperience,jdbcType=VARCHAR},
+      </if>
+      <if test="eudcationexperience != null">
+        eudcationexperience = #{eudcationexperience,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.pojo.JianLi">
+    update jianli
+    set name = #{name,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      wantjob = #{wantjob,jdbcType=VARCHAR},
+      wanthangye = #{wanthangye,jdbcType=VARCHAR},
+      wantarea = #{wantarea,jdbcType=VARCHAR},
+      wantpay = #{wantpay,jdbcType=VARCHAR},
+      workexperience = #{workexperience,jdbcType=VARCHAR},
+      eudcationexperience = #{eudcationexperience,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
