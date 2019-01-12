@@ -23,7 +23,7 @@ public class IssueController {
 	@Autowired
 	private IssueService ise;
 	
-	@ApiOperation(notes = "实现传递参数，响应指定数量的数据",value = "看公司-提问展示")
+	@ApiOperation(notes = "实现传递参数，响应指定数量的数据",value = "看公司-提问展示，id是公司id")
 	@PostMapping("icrshowAll.do")
 	public PageBeanVo<Issue> showAll(int page, int limit,Integer id) {
 		return ise.findById(page, limit, id);

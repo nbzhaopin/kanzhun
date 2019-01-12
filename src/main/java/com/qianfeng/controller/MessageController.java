@@ -22,13 +22,13 @@ public class MessageController {
 	@Autowired
 	private MessageService mse;
 	
-	@ApiOperation(notes = "实现传递参数，响应指定数量的数据",value = "看公司-点评展示")
+	@ApiOperation(notes = "实现传递参数，响应指定数量的数据",value = "看公司-点评展示，id是公司id")
 	@PostMapping("mcrshowAll.do")
 	public ResultVo showAll(Integer id) {
 		return mse.findById(id);
 	}
 	
-	@ApiOperation(notes = "实现传递参数，响应指定数量的数据",value = "看公司-点评添加")
+	@ApiOperation(notes = "实现传递参数，响应指定数量的数据",value = "看公司-点评添加，grand是评分")
 	@PostMapping("mcradd.do")
 	public ResultVo add(Message record, String grade) {
 		return mse.addById(record, grade);

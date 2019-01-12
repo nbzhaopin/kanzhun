@@ -25,7 +25,7 @@ public class HkoController {
 	@Autowired
 	private HkoService hmr;
 	
-	@ApiOperation(value="首页面试经展示")
+	@ApiOperation(value="首页面试经展示，id是公司id")
 	@PostMapping("hkcshowAll.do")
 	public PageBeanVo<Hko> showAll(int page, int limit,Integer id) {
 		return hmr.findById(page, limit, id);
